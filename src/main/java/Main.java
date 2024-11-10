@@ -14,10 +14,11 @@ public class Main {
     public static final String WEATHER_URL = "https://api.weather.yandex.ru/v2/forecast?lat=52.37125&lon=4.89388&limit=3";
     public static final String WEATHER_API_HEADER_KEY = "X-Yandex-API-Key";
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) {
         var weatherKey = getWeatherServiceKey();
         if (weatherKey == null || weatherKey.isEmpty()) {
             System.out.println("error: please set WEATHER_KEY environment variable");
+            return;
         }
 
         try (HttpClient httpClient = HttpClient.newHttpClient()) {
